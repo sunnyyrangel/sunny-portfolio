@@ -1,28 +1,17 @@
 @import "tailwindcss";
 
-/* ─── Color System ─── */
 :root {
-  --color-bg: #0a0a0a;
-  --color-bg-elevated: #141414;
-  --color-bg-muted: #1a1a1a;
-  --color-surface: #222222;
-
-  --color-text: #fafaf5;
-  --color-text-muted: #a8a29e;
-  --color-text-subtle: #78716c;
-
-  --color-accent: #d97706;
-  --color-accent-light: #f59e0b;
-  --color-accent-muted: rgba(217, 119, 6, 0.15);
-
-  --color-border: #292524;
-  --color-border-subtle: #1c1917;
+  --color-bg: #ffffff;
+  --color-text: #171717;
+  --color-text-secondary: #737373;
+  --color-text-subtle: #a3a3a3;
+  --color-border: #e5e5e5;
+  --color-surface: #fafafa;
 
   --font-display: var(--font-instrument-serif);
   --font-body: var(--font-dm-sans);
 }
 
-/* ─── Base ─── */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -33,29 +22,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* ─── Selection ─── */
 ::selection {
-  background-color: var(--color-accent-muted);
-  color: var(--color-accent-light);
-}
-
-/* ─── Utility: animated gradient text ─── */
-.gradient-text {
-  background: linear-gradient(
-    135deg,
-    var(--color-text) 0%,
-    var(--color-accent-light) 40%,
-    var(--color-accent) 60%,
-    var(--color-text) 100%
-  );
-  background-size: 300% 300%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: gradient-shift 8s ease-in-out infinite;
-}
-
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+  background-color: #171717;
+  color: #ffffff;
 }

@@ -1,18 +1,21 @@
 import { Hero } from "@/components/hero";
-import { ProjectsSection } from "@/components/projects-section";
-import { About } from "@/components/about";
-import { Skills } from "@/components/skills";
-import { Contact } from "@/components/contact";
+import { ProjectPreview } from "@/components/project-preview";
 import { Footer } from "@/components/footer";
+import { projects } from "@/lib/projects";
 
 export default function Home() {
   return (
-    <main className="bg-[var(--color-bg)]">
+    <main>
       <Hero />
-      <ProjectsSection />
-      <About />
-      <Skills />
-      <Contact />
+
+      <section id="work" className="px-6 pb-24">
+        <div className="mx-auto max-w-6xl space-y-20">
+          {projects.map((project, i) => (
+            <ProjectPreview key={project.slug} project={project} index={i} />
+          ))}
+        </div>
+      </section>
+
       <Footer />
     </main>
   );

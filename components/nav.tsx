@@ -1,26 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
-const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Contact", href: "#contact" },
-];
-
 export function Nav() {
-  const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [mobileOpen, setMobileOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  // Lock body scroll when mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -28,39 +17,35 @@ export function Nav() {
     };
   }, [mobileOpen]);
 
-  const handleLinkClick = () => setMobileOpen(false);
+  const links = [
+    { label: "Work", href: isHome ? "#work" : "/#work" },
+    { label: "Photography", href: "/photography" },
+    { label: "Contact", href: isHome ? "#contact" : "/#contact" },
+  ];
 
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-[var(--color-bg)]/80 backdrop-blur-xl border-b border-[var(--color-border)]"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          {/* Wordmark */}
-          <a
-            href="#"
-            className="font-[family-name:var(--font-display)] text-xl tracking-tight text-[var(--color-text)] transition-colors hover:text-[var(--color-accent-light)]"
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
+          <Link
+            href="/"
+            className="text-sm font-medium tracking-wide text-[var(--color-text)] transition-opacity hover:opacity-60"
           >
             Sunny Rangel
-          </a>
+          </Link>
 
-          {/* Desktop links */}
-          <ul className="hidden items-center gap-8 md:flex">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  className="text-sm tracking-wide text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text)]"
-                >
-                  {link.label}
-                </a>
-              </li>
+          {/* Desktop */}
+          <div className="hidden gap-8 md:flex">
+            {links.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-sm text-[var(--color-text-secondary)] transition-opacity hover:opacity-60"
+              >
+                {link.label}
+              </Link>
             ))}
-          </ul>
+          </div>
 
           {/* Mobile hamburger */}
           <button
@@ -70,18 +55,18 @@ export function Nav() {
           >
             <motion.span
               animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-              className="block h-[1.5px] w-5 bg-[var(--color-text)]"
-              transition={{ duration: 0.25 }}
+              className="block h-px w-5 bg-[var(--color-text)]"
+              transition={{ duration: 0.2 }}
             />
             <motion.span
               animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-              className="block h-[1.5px] w-5 bg-[var(--color-text)]"
-              transition={{ duration: 0.15 }}
+              className="block h-px w-5 bg-[var(--color-text)]"
+              transition={{ duration: 0.1 }}
             />
             <motion.span
               animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-              className="block h-[1.5px] w-5 bg-[var(--color-text)]"
-              transition={{ duration: 0.25 }}
+              className="block h-px w-5 bg-[var(--color-text)]"
+              transition={{ duration: 0.2 }}
             />
           </button>
         </div>
@@ -94,30 +79,27 @@ export function Nav() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[var(--color-bg)]/95 backdrop-blur-2xl md:hidden"
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-40 flex flex-col items-center justify-center bg-[var(--color-bg)] md:hidden"
           >
-            <nav>
-              <ul className="flex flex-col items-center gap-8">
-                {navLinks.map((link, i) => (
-                  <motion.li
-                    key={link.href}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ delay: 0.05 + i * 0.07, duration: 0.3 }}
+            <ul className="flex flex-col items-center gap-8">
+              {links.map((link, i) => (
+                <motion.li
+                  key={link.label}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.05, duration: 0.25 }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={() => setMobileOpen(false)}
+                    className="text-2xl text-[var(--color-text)]"
                   >
-                    <a
-                      href={link.href}
-                      onClick={handleLinkClick}
-                      className="font-[family-name:var(--font-display)] text-3xl text-[var(--color-text)] transition-colors hover:text-[var(--color-accent-light)]"
-                    >
-                      {link.label}
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </nav>
+                    {link.label}
+                  </Link>
+                </motion.li>
+              ))}
+            </ul>
           </motion.div>
         )}
       </AnimatePresence>
