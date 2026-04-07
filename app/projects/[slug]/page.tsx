@@ -156,6 +156,18 @@ export default async function ProjectPage({
           </section>
         )}
 
+        {/* Reflection */}
+        {project.reflection && (
+          <section className="mt-16 border-t border-[var(--color-border)] pt-12">
+            <h2 className="font-[family-name:var(--font-display)] text-2xl tracking-tight sm:text-3xl">
+              Reflection
+            </h2>
+            <p className="mt-4 leading-relaxed text-[var(--color-text-secondary)]">
+              {project.reflection}
+            </p>
+          </section>
+        )}
+
         {/* Bottom nav */}
         <div className="mt-20 flex items-center justify-between border-t border-[var(--color-border)] pt-8">
           <Link

@@ -21,4 +21,5 @@ export interface Project {
   overview: string;
   sections: CaseStudySection[];
   results?: string[];
+  reflection?: string;
 }

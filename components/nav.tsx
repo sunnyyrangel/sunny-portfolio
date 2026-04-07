@@ -25,7 +25,7 @@ export function Nav() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/90 backdrop-blur-sm">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-[var(--color-bg)]/80 backdrop-blur-md">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-5">
           <Link
             href="/"
@@ -35,7 +35,7 @@ export function Nav() {
           </Link>
 
           {/* Desktop */}
-          <div className="hidden gap-8 md:flex">
+          <div className="hidden items-center gap-8 md:flex">
             {links.map((link) => (
               <Link
                 key={link.label}
@@ -45,6 +45,12 @@ export function Nav() {
                 {link.label}
               </Link>
             ))}
+            <a
+              href="mailto:sunjanay@gmail.com"
+              className="text-sm text-[var(--color-text)] underline underline-offset-4 transition-opacity hover:opacity-60"
+            >
+              sunjanay@gmail.com
+            </a>
           </div>
 
           {/* Mobile hamburger */}
@@ -54,7 +60,9 @@ export function Nav() {
             aria-label={mobileOpen ? "Close menu" : "Open menu"}
           >
             <motion.span
-              animate={mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              animate={
+                mobileOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }
+              }
               className="block h-px w-5 bg-[var(--color-text)]"
               transition={{ duration: 0.2 }}
             />
@@ -64,7 +72,9 @@ export function Nav() {
               transition={{ duration: 0.1 }}
             />
             <motion.span
-              animate={mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              animate={
+                mobileOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }
+              }
               className="block h-px w-5 bg-[var(--color-text)]"
               transition={{ duration: 0.2 }}
             />
@@ -99,6 +109,18 @@ export function Nav() {
                   </Link>
                 </motion.li>
               ))}
+              <motion.li
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15, duration: 0.25 }}
+              >
+                <a
+                  href="mailto:sunjanay@gmail.com"
+                  className="text-lg text-[var(--color-text-secondary)]"
+                >
+                  sunjanay@gmail.com
+                </a>
+              </motion.li>
             </ul>
           </motion.div>
         )}

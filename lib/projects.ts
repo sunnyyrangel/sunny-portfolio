@@ -81,6 +81,8 @@ export const projects: Project[] = [
       "Belonging metrics integrated into impact reporting",
       "Deep linking for caseworker-to-client resource sharing",
     ],
+    reflection:
+      "If I were starting over, I'd invest more in user testing with actual foster youth before building the full search interface. We made assumptions about filter usage that we later had to revise. The AI enrichment workflow was a late addition that became one of the most impactful features — I'd prioritize that earlier next time.",
   },
   {
     slug: "community-platform",
@@ -168,6 +170,8 @@ export const projects: Project[] = [
       "Migrated from Notion to HubSpot CRM for ticket tracking",
       "Support request data feeding directly into annual impact reports",
     ],
+    reflection:
+      "The Notion-to-HubSpot migration was painful but necessary. I should have started with a CRM from day one instead of building a stopgap. The three-user-type architecture was the right call — it let us scale without diluting the experience for our core users (foster alumni). I'd add more automated follow-ups to the ticket system next.",
   },
   {
     slug: "admin-dashboard",
@@ -235,6 +239,8 @@ export const projects: Project[] = [
       "178 individuals tracked through support pipeline",
       "Data-driven impact report: 94 housing, 65 employment, 52 education requests",
     ],
+    reflection:
+      "The biggest learning was that the team didn't need more dashboards — they needed fewer, better ones. My first iteration had too many views. Consolidating into three focused dashboards (analytics, feedback, submissions) with clear action items on each was the breakthrough. The belonging metrics were a happy accident that became central to the org's storytelling.",
   },
   {
     slug: "foster-greatness-website",
@@ -308,6 +314,8 @@ export const projects: Project[] = [
       "Enterprise security: CSP, rate limiting, RLS, Sentry",
       "11 conference presentations featuring the platform",
     ],
+    reflection:
+      "The configuration-driven architecture was the single best decision. Before this, every campaign launch required a developer. Now the marketing team can go from idea to live campaign page in hours. I'd build the Sanity CMS integration earlier in the project lifecycle — we spent too long with hardcoded content that should have been editable from day one.",
   },
   {
     slug: "brand-visual-design",
@@ -408,5 +416,7 @@ export const projects: Project[] = [
       "Challenge coins distributed to thousands of healthcare workers",
       "Holiday gift production coordinated for 20,000+ employees",
     ],
+    reflection:
+      "Working with these brands taught me that great design at scale requires systems, not one-offs. The move from individual designer to team lead forced me to document my process and create reusable templates — skills that directly shaped how I approach frontend component design today.",
   },
 ];
