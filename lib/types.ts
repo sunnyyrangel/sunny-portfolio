@@ -13,7 +13,12 @@ export interface Project {
   slug: string;
   title: string;
   subtitle: string;
-  category: "Design" | "Design & Development";
+  category: string;
+  role: string;
+  timeline: string;
+  tools: string[];
   heroImage: string;
+  overview: string;
   sections: CaseStudySection[];
+  results?: string[];
 }
