@@ -35,6 +35,9 @@ export const metadata: Metadata = {
       "Designer and developer crafting digital experiences for organizations doing good.",
   },
   metadataBase: new URL("https://sunnyrangel.com"),
+  icons: {
+    icon: "/favicon.svg",
+  },
 };
 
 export default function RootLayout({
